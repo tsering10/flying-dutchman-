@@ -1,0 +1,45 @@
+{
+  "form-group": {
+    "identifier": "Användare",
+    "password": "Lösenord",
+    "input_identifier" : "Användarnamn",
+    "input_password" : "Lösenord"
+  }, 
+ "buttonD" : {
+    "button" : "Logga in",
+    "button_return" : "Tillbaka",
+    "button_payment" : "Betala",
+    "button_submit" : "Fortsätt",
+    "button_cancel" : "Avbryt"
+  },
+  "Copy" : {
+    "copyright" : "Copyright © 2015 Flying Dutchman - All rights reserved"
+  },
+  "order" : {
+    "welcome" : "Välkommen  ",
+    "log_out" : "Logga ut",
+    "drinks" : "Drycker",
+    "search" : "Sök",
+    "draft" : "Fatöl",
+    "beers" : "Flasköl",
+    "soft" : "Läsk",
+    "whiskey" : "Whiskey",
+    "wine" : "Vin", 
+    "other" : "Övrigt",
+    "recipe" : "Recept",
+    "name" : "Namn",
+    "price" : "Pris",
+    "quantity" : "Antal",
+    "confirmation" : "Order Bekräftelse",
+    "sbl_price" : "sbl_pris",
+    "pub_price" : "pub_pris",
+    "beer_id" : "Öl ID",
+    "count" : "antal",
+    "picture" : "bild"
+  },
+  "management" : {
+    "home" : "Hem",
+    "account_management" : "Kontohantering"
+  }
+  
+}

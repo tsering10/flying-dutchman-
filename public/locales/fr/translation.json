@@ -1,0 +1,50 @@
+{
+  "form-group": {
+    "identifier": "Identifiant",
+    "password": "Mot de passe",
+    "input_identifier" : "Entrer identifiant",
+    "input_password" : "Mot de passe"
+  }, 
+  "buttonD" : {
+    "button" : "Connexion",
+    "button_return" : "Retour",
+    "button_payment" : "Payer",
+    "button_submit" : "Valider",
+    "button_cancel" : "Annuler"
+  },
+  "Copy" : {
+    "copyright" : "Copyright © 2015 Flying Dutchman - Tous droits réservés"
+  },
+  "order" : {
+    "welcome" : "Bienvenue  ",
+    "log_out" : "Se déconnecter",
+    "drinks" : "Boisson",
+    "search" : "Rechercher",
+    "draft" : "Bière en pression",
+    "beers" : "Bouteilles de bière",
+    "soft" : "Boissons non-alcoolisées",
+    "whiskey" : "Whisky",
+    "wine" : "Vin", 
+    "other" : "Autre",
+    "recipe" : "Facture",
+    "name" : "Nom",
+    "price" : "Prix",
+    "quantity" : "Quantité",
+    "confirmation" : "Confirmation de commande",
+    "sbl_price" : "sbl_prix",
+    "pub_price" : "pub_prix",
+    "beer_id" : "bière_id",
+    "count" : "quantité",
+    "picture" : "image"
+    
+  },
+  "management" : {
+    "home" : "Accueil",
+    "account_management" : "Gestion de Compte"
+  }
+  
+}
+ 
+ 
+
+

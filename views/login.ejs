@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="/img/icon.png" />
+	<title>Flying Dutchman</title>   
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	<script  src="/js/i18next-1.7.7.min.js"></script>
+	<script  src="/js/i18next-1.7.7.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style1.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+	<script type="text/javascript" src="/js/script.js"></script>
+</head>
+    <script type="text/javascript">
+    
+        
+        // Apply the background color transmitted through the variable in the local storage flyingdutchman_currentColor.
+        $(document).ready(function() {
+            var local_col = window.localStorage.getItem("flyingdutchman_currentColor");
+           
+                $("body").css("background-color",local_col); 
+    
+            });
+    
+        var local_lng = window.localStorage.getItem("flyingdutchman_language");
+            
+        local_lng = local_lng=="dev" ? "en" : local_lng;
+        var options ={ 
+            lng : local_lng
+        };
+            
+        i18n.init( options, function(t) {
+                       $(".form-group").i18n();
+                       $("#copyright").i18n();
+                       $("#log").i18n(); } );
+                   
+        function changeE() {
+              var options ={ 
+               lng: "en" ,  
+               resGetPath: '/locales/en/translation.json'
+                };
+        
+                i18n.init(options, function(t) {
+                           $(".form-group").i18n();
+                           $("#copyright").i18n();
+                           $("#log").i18n();
+                });
+                window.localStorage.setItem("flyingdutchman_language", "en");
+        }/*changeE*/
+        
+        function changeF() {
+              var options ={ 
+               lng: "fr" ,  
+               resGetPath: '/locales/fr/translation.json'
+                };
+        
+                i18n.init(options, function(t) {
+                           $(".form-group").i18n();
+                           $("#copyright").i18n();
+                           $("#log").i18n();
+                           
+                });
+                window.localStorage.setItem("flyingdutchman_language", "fr");
+        }/*changeF*/
+        
+           function changeS() {
+              var options ={ 
+               lng: "sv" ,  
+               resGetPath: '/locales/sv/translation.json'
+                };
+        
+                i18n.init(options, function(t) {
+                           $(".form-group").i18n();
+                           $("#copyright").i18n();
+                           $("#log").i18n();
+                });
+                window.localStorage.setItem("flyingdutchman_language", "sv");
+        }/*changeS*/
+        
+        function changeTheme() {
+        
+        
+        if (window.localStorage.getItem("flyingdutchman_changeColor") == 'black') {
+        
+        current_Color = 'black';
+        window.localStorage.setItem("flyingdutchman_currentColor", current_Color);
+        document.body.style.background = 'black';
+        change_Color = 'beige';
+       
+        window.localStorage.setItem("flyingdutchman_changeColor", change_Color);
+         
+        }
+        else { 
+          
+        current_Color = 'beige';
+        window.localStorage.setItem("flyingdutchman_currentColor", current_Color);
+        
+        document.body.style.background = 'beige';
+        change_Color = 'black' ;
+        window.localStorage.setItem("flyingdutchman_changeColor", change_Color);
+        
+        }
+        }/*changeTheme*/
+    </script>
+
+
+<body id="body">
+<header>
+   <div id="title"> Flying Dutchman <img id="beer_img" src="/img/icon.png" style="width:30px; height:30px;"/></div>
+    <div id="language">
+      <img class="icon_language" onclick="changeF();" src="/img/ico_fr.png"/>
+      <img class="icon_language" onclick="changeE();" src="/img/ico_en.png"/>
+     <!-- // ADD -->
+      <img class="icon_language" onclick="changeS();" src="/img/ico_sv.png"/> 
+      <img class="icon_language" onclick="changeTheme();" src="/img/ico_boat.png"/>
+      <!--// STOPADD -->
+    </div>
+  </div>
+</header>  
+<div id="log">
+
+    <% if (error != null && error != '') { %>
+    <div class="">
+        <i class=""></i> <%= error %>
+    </div>
+    <% } %>
+
+
+  <form id="login" action="/login" method="post">
+    <div class="form-group">
+      <label data-i18n = "form-group.identifier"></label>
+      <input id="username" name="username" type="text" class="form-control"  placeholder="" data-i18n="[placeholder]form-group.input_identifier">
+    </div>
+    <div class="form-group">
+      <label data-i18n = "form-group.password"></label>
+      <input id="password" name="password" type="password" class="form-control" placeholder="" data-i18n="[placeholder]form-group.input_password">
+    </div>
+     <button type="submit" value="Submit" data-i18n="buttonD.button" class="btn btn-success" id="submit"> </button>
+       
+ 
+  </form> 
+</div> 
+
+<footer>
+  <div id="copyright"> Copyright © 2015 Flying Dutchman - All rights reserved</div>
+</footer>  
+
+</body>
+</html>

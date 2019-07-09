@@ -1,0 +1,47 @@
+{
+  
+  "form-group": {
+    "identifier": "Username",
+    "password": "Password",
+    "input_identifier" : "Enter username",
+    "input_password" : "Password"
+  },
+  "buttonD" : {
+    "button" : "Login",
+    "button_return" : "Return",
+    "button_payment" : "Payment",
+    "button_submit" : "Submit",
+    "button_cancel" : "Cancel"
+  },
+  "Copy" : {
+    "copyright" : "Copyright © 2015 Flying Dutchman - All rights reserved"
+  },
+  "order" : {
+    "welcome" : "Welcome  ",
+    "log_out" : "log out",
+    "drinks" : "Drink",
+    "search" : "Search",
+    "draft" : "Draft Beers",
+    "beers" : "Bottled Beers",
+    "soft" : "Soft Drink",
+    "whiskey" : "Whiskey",
+    "wine" : "Wine", 
+    "other" : "Other",
+    "recipe" : "Receipt",
+    "name" : "Name",
+    "price" : "Price",
+    "quantity" : "Quantity",
+    "confirmation" : "Order Confirmation",
+    "sbl_price" : "sbl_price",
+    "pub_price" : "pub_price",
+    "beer_id" : "beer_id",
+    "count" : "count",
+    "picture" : "picture"
+    
+  },
+  "management" : {
+    "home" : "Home",
+    "account_management" : "Account Management"
+  }
+  
+}

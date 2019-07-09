@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="/img/icon.png" />
+	<title>Flying Dutchman</title>   
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	<script  src="/js/i18next-1.7.7.min.js"></script>
+	<script  src="/js/i18next-1.7.7.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style1.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/edit.css">
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+	<script type="text/javascript" src="/js/script.js"></script>
+		<script type="text/javascript">
+		
+		        
+
+            var local_lng = window.localStorage.getItem("flyingdutchman_language");
+            var options ={ 
+                lng : local_lng
+            };
+            
+            i18n.init( options, function(t) {
+                       $("#copyright").i18n();
+                       $("#user").i18n(); 
+                       $("#drink").i18n();
+                       $("#title1").i18n();
+                       $("#Button1").i18n();
+					   $("#Button2").i18n();
+					   $("#table1").i18n();
+					   $("#table2").i18n();
+					   $("#drink1").i18n();
+					   $("#recipe").i18n();
+					   $(".modal-footer").i18n();
+					   $(".modal-title").i18n();
+
+            } );
+        
+    </script>
+</head>
+
+<body id="body">
+<header>
+  <div id="title"> Flying Dutchman <img  id="beer_img"  src="/img/icon.png" style="width:30px; height:30px;"/></div>
+   <div id="management">
+  	<div class="btn-group">
+       <ul class="nav nav-tabs">
+         <li role="presentation" ><a href="/order">Home</a></li>
+         <li role="presentation" class="active" ><a href="#">Account Management</a></li>
+         <!--<li role="presentation"><a href="#">Stock Management</a></li>-->
+       </ul>
+    </div>
+  </div>
+  
+  <div id="user">
+  	<p><font color=#337ab7><span id="welcome" data-i18n="order.welcome"></span></font><%= user.first_name %>, <font color="#FFD700"><%= user.assets %>kr</font></p>
+  	<a data-i18n="order.log_out" href="/logout"></a>
+  </div>
+   
+</header>
+
+<div id="page">
+    
+  <ol class="breadcrumb left">
+   <li class="active" data-i18n = "management.home"><a href="#" onClick="editAccount()">Edit Account</a></li>
+      <li><a href="#" onClick="addAccount()">New Account</a></li>
+      <li><a href="#" onClick="deleteAccount()">Delete Account</a></li>
+      <li><a href="#" onClick="addCredit()">Add Credit</a></li>
+ </ol>
+<div id="stuff" class="container">
+    
+    
+</div>
+          
+</div><!--page-->
+/* Editaccount form */
+	<div id="editAccount" class="input-group right edit " hidden="true">
+		<h3>Edit Account<span class="label label-default"></span></h3>
+    	<form class="navbar-form navbar-left" id="contactform"> 
+    		<p class="contact"><label for="name">First Name</label></p> 
+    		<input class="form-control" id="name" name="name" placeholder="First name" required="" tabindex="1" type="text" value="<%= user.first_name %>"> 
+      <br>
+
+    		<p class="contact"><label for="surname">Surname Name</label></p> 
+    		<input class="form-control" id="surname" name="surname" placeholder="Surname" required="" tabindex="1" type="text"> 
+    		 <br>
+    			 
+    		<p class="contact"><label for="email">Email</label></p> 
+    		<input class="form-control" id="email" name="email" placeholder="example@domain.com" required="" type="email"> 
+    		 <br>
+                
+            <p class="contact"><label for="username">Username</label></p> 
+    		<input class="form-control"  id="username" name="username" placeholder="username" required="" tabindex="2" type="text"> 
+    		 <br>
+    			 
+            <p class="contact"><label for="password">Password</label></p> 
+    		<input class="form-control" type="password" id="password" name="password" required=""> 
+    		 <br>
+                      
+            <p class="contact"><label for="phone">Mobile phone</label></p> 
+            <input class="form-control"  id="phone" name="phone" placeholder="phone number" required="" type="text"> <br>
+            
+             <button id="submit_account" type="submit" class="btn btn-success">Submit</button>
+        
+   		</form> 
+
+   	</div>  
+   /* Addaccount form */
+   	<div id="addAccount" class="form edit" hidden="true">
+   	    	<h3>New Account<span class="label label-default"></span></h3>
+    		<form id="contactform">
+    		 	<p class="contact"><label>Civility</label></p> 
+    		  <input type="radio" name="sexe" value="Mlle">Ms
+             <font color="whitesmoke">...</font>
+             <input type="radio" name="sexe" value="Mme">Mrs
+             <font color="whitesmoke">...</font>
+             <input type="radio" name="sexe" value="M">Mr 
+             <br>
+            	<p class="contact"><label for="name">Name</label></p> 
+    			<input class="form-control" id="name" name="name" placeholder="First and last name" required="" tabindex="1" type="text"> 
+    			 
+    			<p class="contact"><label for="email">Email</label></p> 
+    			<input class="form-control" id="email" name="email" placeholder="example@domain.com" required="" type="email"> 
+                
+       <p class="contact"><label for="username">Create a username</label></p> 
+    			<input class="form-control" id="username" name="username" placeholder="username" required="" tabindex="2" type="text"> 
+    			 
+       <p class="contact"><label for="password">Create a password</label></p> 
+    			<input class="form-control" type="password" id="password" name="password" required=""> 
+                
+       <p class="contact"><label for="repassword">Retype your password</label></p> 
+    			<input class="form-control" type="password" id="retype password" name="retype password" required=""> 
+                 
+               <fieldset>
+                <label class="contact">DoB</label>
+                <label><input class="form-control birthday" maxlength="2" name="BirthDay"  placeholder="Day" style="width: 55px;"></label>
+                 <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                   Month <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">January</a></li>
+                    <li><a href="#">February</a></li>
+                    <li><a href="#">March</a></li>
+                    <li><a href="#">April</a></li>
+                    <li><a href="#">May</a></li>
+                    <li><a href="#">June</a></li>
+                    <li><a href="#">July</a></li>
+                    <li><a href="#">August</a></li>
+                    <li><a href="#">September</a></li>
+                    <li><a href="#">October</a></li>
+                    <li><a href="#">November</a></li>
+                    <li><a href="#">December</a></li>
+                  </ul>
+                </div>
+                
+                <label>Year <input  class="form-control birthyear" maxlength="4" name="BirthYear" placeholder="Year" required=""></label>
+              </fieldset>
+              
+            <p class="contact"><label for="phone">Mobile phone</label></p> 
+            <input class="form-control" id="phone" name="phone" placeholder="phone number" required="" type="text"> <br>
+      
+            <button id="submit_account" type="submit" class="btn btn-success">Submit</button>
+
+      </form> 
+   </div>   
+  /* deleteaccount form */
+ 
+   
+   <div id="deleteAccount" class="form edit" hidden="true">
+    <h4> Before you delete your account, know this: </h4>
+    <ul>
+  		<li>This action is permanent.</li>
+  	  <li>Account deletion cannot be undone.</li>
+  	</ul>
+    <form id="contactform"> 
+    	<p class="contact"><label for="name">User name</label></p> 
+    	<input class="form-control" id="name" name="user name" placeholder="user name" required="" tabindex="1" type="text"> 
+    	<br>	
+    	<p class="contact"><label for="password">Password</label></p> 
+    	<input class="form-control" type="password" id="password" name="password" required=""> 
+    	<br>	
+    	<p class="contact"><label for="repassword">Retype your password</label></p> 
+    	<input class="form-control" type="password" id="retype password" name="retype password" required=""> 
+    	<br>
+    	<input class="btn btn-success" name="submit" id="submit" value="Delete my account " type="submit"> 	 
+    </form> 
+	 </div> 
+	 
+	 
+	 <div id="addCredit" class="form edit" hidden="true">
+	 	<h3>
+	 		Add Credit
+	 	</h3>
+	 	<form id="contactform"> 
+	 		<p class="contact"><label for="name">Customer Name</label></p> 
+    		<input class="form-control" id="name" name="name" placeholder="First and last name" required="" tabindex="1" type="text"> 
+    		<br>	 
+    		<p class="contact"><label for="amount">Credit Amount</label></p> 
+    		<input class="form-control" id="amount" name="amount" required="" type="text"> 
+    		<br>
+      <input class="btn btn-success" name="submit" id="submit" value="Add Credit" type="submit">
+	 	</form>	
+	 </div>	
+
+   
+   
+	<div class="modal fade bs-example-modal-lg"   tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	    	<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                 <h4 class="modal-title" data-i18n="order.confirmation" >Order Confirmation</h4>
+
+            </div>
+            
+	    	<div id="popup_order">
+	    		<div id="popup_text">
+	    		</div>
+
+			  </div>
+			
+			<div class="modal-footer">
+	    		<button type="button" class="buttonD" data-i18n="buttonD.button_submit" onClick="submit_Total();"></button>
+				<button type="reset" class="buttonD" data-i18n="buttonD.button_cancel" data-dismiss="modal"></button>
+            </div>
+			  
+	    </div>
+	  </div>
+	</div>
+
+
+<footer>
+  <div id="copyright" data-i18n="Copy.copyright"></div>
+</footer>  
+
+</body>
+</html>

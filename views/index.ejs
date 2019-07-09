@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/img/icon.png" />
+    <title>Flying Dutchman</title>
+    <!-- Needed by the translation function i18next for more efficiency-->
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <!-- Contains the script of the translation function i18next we use for the internationalization -->
+    <script  src="/js/i18next-1.7.7.min.js"></script>
+	<script  src="/js/i18next-1.7.7.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style1.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+
+</head>
+
+    <script type="text/javascript">
+        // We consider that we run the application on recent browsers that support the HTML5 localStorage.
+        
+        // We take the content of flyingdutchman_language, that contains the language saved, in the local storage. 
+        var local_lng = window.localStorage.getItem("flyingdutchman_language");
+         var options ={ 
+          lng:  local_lng || window.navigator.userLanguage || window.navigator.language || 'en',
+          fallbackLang: 'en'
+        };
+        
+        // Initialization of the translation with language the one in local storage, or the one of the current browser or by default "english"
+        // The translations are in JSON file for each language, they are in the folder "/public/locales".
+        i18n.init(options, function(t) {
+                    // Apply the translation function in elements of class form-group.
+                   $(".form-group").i18n();
+                   // Apply the translation function in element with as id "copiright"
+                   $("#copyright").i18n();
+                   $("#log").i18n(); } );
+                   
+                   
+        function changeE() {
+          var options ={ 
+           lng: "en" ,  
+           resGetPath: '/locales/en/translation.json'
+        };
+        
+        // Translation function applied with "english" as language
+        i18n.init(options, function(t) {
+                   $(".form-group").i18n();
+                   $("#copyright").i18n();
+                   $("#log").i18n();
+                   
+        });
+        
+        // Setting of "english" in variable flyingdutchman_language created in the local storage.
+        window.localStorage.setItem("flyingdutchman_language", "en");
+
+        }
+
+        function changeF() {
+          var options ={ 
+           lng: "fr" ,  
+           resGetPath: '/locales/fr/translation.json'
+        };
+
+        i18n.init(options, function(t) {
+                   $(".form-group").i18n();
+                   $("#copyright").i18n();
+                   $("#log").i18n();
+                   
+        });
+        
+        window.localStorage.setItem("flyingdutchman_language", "fr");
+        
+        }
+       
+        
+         function changeS() {
+          var options ={ 
+           lng: "sv" ,  
+           resGetPath: '/locales/sv/translation.json'
+        };
+
+        i18n.init(options, function(t) {
+                   $(".form-group").i18n();
+                   $("#copyright").i18n();
+                   $("#log").i18n();
+                   
+        });
+        
+        window.localStorage.setItem("flyingdutchman_language", "sv");
+        
+        }
+        
+        // Variable used to change the color.
+        var change_Color;
+        // Variable that will contain the current color of the background and used by the other pages.
+        var current_Color;
+        
+        window.localStorage.setItem("flyingdutchman_changeColor", change_Color);
+        
+        // Function that change the background color by clicking on the image /img/ico_boat.png.
+         function changeTheme() {
+     
+       
+      if (window.localStorage.getItem("flyingdutchman_changeColor") == 'black') {
+        
+        current_Color = 'black';
+        // Set the current_Color variable content into a variable called flyingdutchman_currentColor in the local storage.
+        window.localStorage.setItem("flyingdutchman_currentColor", current_Color);
+        // Apply to the whole page a black background.
+       document.body.style.background = 'black';
+       change_Color = 'beige';
+       // Set the change_Color variable content into a variable called flyingdutchman_changeColor in the local storage.
+       window.localStorage.setItem("flyingdutchman_changeColor", change_Color);
+         
+         }
+      else { 
+          
+      current_Color = 'beige';
+      window.localStorage.setItem("flyingdutchman_currentColor", current_Color);
+        
+      document.body.style.background = 'beige';
+      change_Color = 'black' ;
+      window.localStorage.setItem("flyingdutchman_changeColor", change_Color);
+      
+      }
+         }
+     
+    </script>
+
+
+<body id="body">
+<header>
+    <div id="title"> Flying Dutchman</div>
+    <div id="language">
+        <!-- draggable makes the element draggable, ondragstart call the function to specify what data is to be dragged.-->
+        <img draggable="true" ondragstart="drag(event)" class="icon_language" onclick="changeF();" src="/img/ico_fr.png"/>
+        
+        <img draggable="true" ondragstart="drag(event)" class="icon_language" onclick="changeS();" src="/img/ico_sv.png"/>
+       
+       
+        <img class="icon_language" onclick="changeE();" src="/img/ico_en.png"/>
+        <img draggable="true" ondragstart="drag(event)" class="icon_language" onclick="changeTheme();" src="/img/ico_boat.png"/>
+    </div>
+    </div>
+</header>
+
+<div id="log">
+
+    <% if (error != null && error != '') { %>
+    <div class="">
+        <i class=""></i> <%= error %>
+    </div>
+    <% } %>
+
+
+    <form id="login" action="/login" method="post">
+        <div class="form-group">
+            <!--data-i18n = "form-group.identifier" : form-group indicates the collection, identifier is the key, then the value associated 
+            with this key is taken-->
+            <label data-i18n = "form-group.identifier"></label>
+            
+            <!-- data-i18n="[placeholder]form-group.input_identifier indicates we want to translate the placeholder of this element and indicate 
+            where to find it in JSON file translation -->
+            <input id="username" name="username" type="text" class="form-control"  placeholder="" data-i18n="[placeholder]form-group.input_identifier">
+        </div>
+        <div class="form-group">
+            
+            <!-- data-i18n indicates we want to translate this element, and its value indicates where to find the corresponding translation in the JSON file -->
+            <label data-i18n = "form-group.password"></label>
+            <input id="password" name="password" type="password" class="form-control" placeholder="" data-i18n="[placeholder]form-group.input_password">
+        </div>
+        <button type="submit" value="Submit" data-i18n="buttonD.button" class="btn btn-success" id="submit"></button>
+
+
+    </form>
+</div>
+
+<footer>
+    <div id="copyright" data-i18n="Copy.copyright"> Copyright © 2015 Flying Dutchman - All rights reserved</div>
+</footer>
+
+</body>
+</html>
